@@ -1,0 +1,81 @@
+﻿@model BCMTIEvents.Models.EventViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>BC MTI Events</h1>
+    <p class="lead">Select parameters from the form below to filter events managed by the British Columbia Ministry of Transportation and Infrustructure.</p>
+    <p><a href="https://api.open511.gov.bc.ca/help" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Find Event</h2>
+        <table>
+            @Html.BeginForm("Index", "Home", FormMethod.Post)
+            {
+                <tr>
+                    <td>Area ID</td>
+                    <td>
+                        @Html.DropDownListFor(m => m.AreaId, Model.eventIdList, new { @class = "fixed" })
+                        @Html.HiddenFor(Model => Model.AreaId, new { Value = Model.AreaId })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Severity</td>
+                    <td>
+                        @Html.DropDownListFor(m => m.Severity, Model.severityList, new { @class = "fixed" })
+                        @Html.HiddenFor(Model => Model.Severity, new { Value = Model.Severity })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>
+                        @Html.DropDownListFor(m => m.Type, Model.eventTypeList, new { @class = "fixed" })
+                        @Html.HiddenFor(Model => Model.Type, new { Value = Model.Type })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Start Date</td>
+                    <td>
+                        @Html.EditorFor(m => m.StartDate, new { id = "startDate", @Value = Model.StartDate, @type = "date" })
+                    </td>
+                </tr>
+                <tr><td><input type="submit" value="Submit" /></td></tr>
+                
+            }
+        </table>
+
+        @foreach (BCMTIEvents.Models.Event eventItem in Model.EventList)
+        {
+            <table>
+                <tr></tr>
+                <tr>
+                    <td>Date:</td>
+                    <td>@eventItem.Date.ToString()</td>
+                </tr>
+                <tr>
+                    <td>Secerity:</td>
+                    <td>@eventItem.Severity</td>
+                </tr>
+                <tr>
+                    <td>Type:</td>
+                    <td>@eventItem.Type</td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td>@eventItem.Description</td>
+                </tr>
+                @foreach (string area in eventItem.Areas)
+                {
+                    <tr>
+                        <td>Area:</td>
+                        <td>@area</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>
