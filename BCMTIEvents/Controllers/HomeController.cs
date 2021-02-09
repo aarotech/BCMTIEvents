@@ -26,7 +26,6 @@ namespace BCMTIEvents.Controllers
             JObject details = JObject.Parse(httpResponseBody);
             foreach (var eventItem in details["events"])
             {
-                model.Messsage += "" + eventItem["id"] + eventItem["description"];
                 Event eventToAdd = new Event()
                 {
                     Description = eventItem["description"].ToString(),
