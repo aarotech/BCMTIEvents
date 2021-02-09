@@ -41,8 +41,7 @@ namespace BCMTIEvents.Controllers
                 model.EventList.Add(eventToAdd);
             }
 
-            //model.Messsage += "model: " + model.ToString();
-            //model.Messsage += httpResponseBody;
+            model.Messsage += Models.EventViewModel.defaultBcMTIOpen511Uri + "/" + "events" + "?" + model.ToString();
 
             return View(model);
         }

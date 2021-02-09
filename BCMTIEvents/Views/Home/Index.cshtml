@@ -16,35 +16,35 @@
         <table>
             @Html.BeginForm("Index", "Home", FormMethod.Post)
             {
-                <tr>
-                    <td>Area ID</td>
-                    <td>
-                        @Html.DropDownListFor(m => m.AreaId, Model.eventIdList, new { @class = "fixed" })
-                        @Html.HiddenFor(Model => Model.AreaId, new { Value = Model.AreaId })
-                    </td>
-                </tr>
-                <tr>
-                    <td>Severity</td>
-                    <td>
-                        @Html.DropDownListFor(m => m.Severity, Model.severityList, new { @class = "fixed" })
-                        @Html.HiddenFor(Model => Model.Severity, new { Value = Model.Severity })
-                    </td>
-                </tr>
-                <tr>
-                    <td>Type</td>
-                    <td>
-                        @Html.DropDownListFor(m => m.Type, Model.eventTypeList, new { @class = "fixed" })
-                        @Html.HiddenFor(Model => Model.Type, new { Value = Model.Type })
-                    </td>
-                </tr>
-                <tr>
-                    <td>Start Date</td>
-                    <td>
-                        @Html.EditorFor(m => m.StartDate, new { id = "startDate", @Value = Model.StartDate, @type = "date" })
-                    </td>
-                </tr>
-                <tr><td><input type="submit" value="Submit" /></td></tr>
-                
+            <tr>
+                <td>Area ID</td>
+                <td>
+                    @Html.DropDownListFor(m => m.AreaId, Model.eventIdList, new { @class = "fixed" })
+                    @Html.HiddenFor(Model => Model.AreaId, new { Value = Model.AreaId })
+                </td>
+            </tr>
+            <tr>
+                <td>Severity</td>
+                <td>
+                    @Html.DropDownListFor(m => m.Severity, Model.severityList, new { @class = "fixed" })
+                    @Html.HiddenFor(Model => Model.Severity, new { Value = Model.Severity })
+                </td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td>
+                    @Html.DropDownListFor(m => m.Type, Model.eventTypeList, new { @class = "fixed" })
+                    @Html.HiddenFor(Model => Model.Type, new { Value = Model.Type })
+                </td>
+            </tr>
+            <tr>
+                <td>Start Date</td>
+                <td>
+                    @Html.EditorFor(m => m.StartDate, new { id = "startDate", @Value = Model.StartDate, @type = "date" })
+                </td>
+            </tr>
+            <tr><td><input type="submit" value="Submit" /></td></tr>
+
             }
         </table>
 
@@ -79,3 +79,5 @@
         }
     </div>
 </div>
+
+@Model.Messsage

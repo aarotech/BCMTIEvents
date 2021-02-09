@@ -102,7 +102,7 @@ namespace BCMTIEvents.Models
             using (HttpClient clientInstance = new HttpClient())
             {
                 //Transmit GET to BCMTI api service
-                Task<HttpResponseMessage> messageTask = clientInstance.GetAsync(defaultBcMTIOpen511Uri + "/" + service + "?" + queryString);
+                Task<HttpResponseMessage> messageTask = clientInstance.GetAsync(defaultBcMTIOpen511Uri + service + "?" + queryString);
                 System.Runtime.CompilerServices.TaskAwaiter<HttpResponseMessage> messageProcessor = messageTask.GetAwaiter();
                 HttpResponseMessage responseMessage = messageProcessor.GetResult();
 
@@ -132,7 +132,7 @@ namespace BCMTIEvents.Models
             if (!string.IsNullOrEmpty(this.AreaId))
             {
                 if (!string.IsNullOrEmpty(queryString)) { queryString += "&"; }
-                queryString += "area=" + this.AreaId;
+                queryString += "area_id=" + this.AreaId;
             }
 
             if (this.StartDate != default(DateTime))
